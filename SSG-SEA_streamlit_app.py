@@ -2,13 +2,11 @@ from numpy import *
 import plotly.express as px
 import streamlit as st
 import pandas as pd
-import os
 
 st.set_page_config(page_title="Comparison SSG-SEA input/output",page_icon=":books:",layout="wide")
 
 st.title(":books: Comparison SSG-SEA input/output Preliminary Study")
 
-filename = os.chdir(r"C:\Users\joellai\Desktop")
 file = "SBS_UG_new.xlsx"
 
 df_lean = pd.read_excel(file,sheet_name="Skill_SSG_Data")
