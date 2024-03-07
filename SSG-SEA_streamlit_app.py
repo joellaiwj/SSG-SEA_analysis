@@ -42,13 +42,7 @@ with st.sidebar:
     
 if len(selected_courses) == 0:
     selected_courses = courses
-
-st.header("General distribution of :green[all courses]")
-col1,col2 = st.columns((2))
-
-st.header("Overview of :orange[user selected courses]")
-col3,col4,col5 = st.columns((3))
-
+    
 filtered_df_lean = df_lean[df_lean['id'].isin(selected_courses)]
 filtered_df_all = df_all[df_all['id'].isin(selected_courses)]
 filtered_df_diff = df_diff[df_diff['id'].isin(selected_courses)]
@@ -66,6 +60,32 @@ N_diff = len(filtered_df_diff)
 input_columns = ['id', 'lean', 'all']
 filtered_df_data = df_data[df_data['id'].isin(selected_courses)]
 filtered_df_data = filtered_df_data[input_columns]
+
+
+df_true_a = df_diff[df_diff['in_lean'] == True]
+df_true_b = df_diff[df_diff['in_all'] == True]
+
+skill_type_counts_a = df_true_a.groupby('skill_type')['in_lean'].count().reset_index(name='in_lean')
+skill_type_counts_b = df_true_b.groupby('skill_type')['in_all'].count().reset_index(name='in_all')
+
+merged_counts = pd.merge(skill_type_counts_a, skill_type_counts_b, on='skill_type', how='outer').fillna(0)
+
+
+
+###############################################################################
+
+st.header("General distribution of :blue[all courses]")
+col1,col2 = st.columns((2))
+
+st.header("Data :green[inputs]")
+st.dataframe(filtered_df_data, use_container_width=True, hide_index=True)
+
+st.header("Overview of :orange[user selected courses]")
+col3,col4,col5 = st.columns((3))
+
+st.header("Analysis of :red[skills tagged]")
+col6,col7 = st.columns((2))
+
 
 with col1:
     st.write("Number of *skill_types* picked up by SSG_SEA for Course Aims + Course ILOs + Course Content")
@@ -92,7 +112,13 @@ with col4:
 with col5:
     st.subheader("Distribution of *skill_type* (Additional skills: "+str(N_diff)+")")
     fig = px.pie(skill_counts_diff, values=skill_counts_diff.values, names=skill_counts_diff.index)
-    st.plotly_chart(fig,use_container_width=True,height=400)
+    st.plotly_chart(fig,use_container_width=True,height=200)
 
-st.subheader("Data inputs")
-st.dataframe(filtered_df_data, use_container_width=True, hide_index=True)
+with col6:
+    st.write("This graph looks at the skills picked up from all OBTL fields that are not pickedup by the lean data fields.\
+             It shows the number of skills that have a keyword match with text found in the lean and all datafields, respecively.\
+            what this implies is that most of the CCS skills are inferred from the data input, while majority of the TSC\
+            requie some form of keyword matching/repetition.")
+    fig = px.bar(merged_counts, x='skill_type', y=['in_lean', 'in_all'],
+                 barmode='group', labels={'value': 'Count', 'variable': 'Data input'})
+    st.plotly_chart(fig)
