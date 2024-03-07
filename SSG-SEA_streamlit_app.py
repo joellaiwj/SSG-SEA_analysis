@@ -37,7 +37,7 @@ with st.sidebar:
     st.write("**CCS:** Critical Core Skills")
 
     st.write('---')
-    st.write("The skills extraction is retreived from: "
+    st.write("The skills extraction is retreived from: ")
     st.markdown(markdown, unsafe_allow_html=True)
     
 if len(selected_courses) == 0:
