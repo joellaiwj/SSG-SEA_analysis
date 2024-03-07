@@ -12,6 +12,7 @@ file = "SBS_UG_new.xlsx"
 df_lean = pd.read_excel(file,sheet_name="Skill_SSG_Data")
 df_all = pd.read_excel(file,sheet_name="Skill_SSG_All")
 df_diff = pd.read_excel(file,sheet_name="Skill_SSG_Diff")
+df_data = pd.read_excel(file,sheet_name="Course_Data")
 
 columns = ['id', 'skill', 'skill_type']
 
@@ -53,6 +54,10 @@ N_lean = len(filtered_df_lean)
 N_all = len(filtered_df_all)
 N_diff = len(filtered_df_diff)
 
+input_columns = ['id', 'lean', 'all']
+filtered_df_data = df_data[df_data['id'].isin(selected_courses)]
+filtered_df_data = filtered_df_data[input_columns]
+
 with col1:
     st.write("Number of *skill_types* picked up by SSG_SEA for Course Aims + Course ILOs + Course Content")
     fig = px.histogram(df_lean, x="skill_type")#,color="id")
@@ -79,3 +84,6 @@ with col5:
     st.subheader("Distribution of *skill_type* (Additional skills: "+str(N_diff)+")")
     fig = px.pie(skill_counts_diff, values=skill_counts_diff.values, names=skill_counts_diff.index)
     st.plotly_chart(fig,use_container_width=True,height=400)
+
+st.subheader("Data inputs")
+st.dataframe(filtered_df_data, use_container_width=True, hide_index=True)
