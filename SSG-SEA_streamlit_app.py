@@ -115,10 +115,11 @@ with col5:
     st.plotly_chart(fig,use_container_width=True,height=200)
 
 with col6:
-    st.write("This graph looks at the skills picked up from all OBTL fields that are not pickedup by the lean data fields.\
-             It shows the number of skills that have a keyword match with text found in the lean and all datafields, respecively.\
-            what this implies is that most of the CCS skills are inferred from the data input, while majority of the TSC\
-            requie some form of keyword matching/repetition.")
     fig = px.bar(merged_counts, x='skill_type', y=['in_lean', 'in_all'],
                  barmode='group', labels={'value': 'Count', 'variable': 'Data input'})
     st.plotly_chart(fig)
+with col7:
+        st.write("This graph looks at the skills picked up from all OBTL fields that are not pickedup by the lean data fields.\
+            It shows the number of skills that have a keyword match with text found in the lean and all data fields, respectively.\
+            What this implies is that most of the CCS skills are inferred from the data input, while a majority (50 and 103 out of 122) of the TSC\
+            require some form of keyword matching/repetition.")
