@@ -18,7 +18,7 @@ columns = ['id', 'skill', 'skill_type']
 
 # Create a link and message
 url = "https://ssg-sea.streamlit.app/"
-link_text = "Visit SkillsFuture Singapore Skills Extraction Application"
+link_text = "SkillsFuture Singapore Skills Extraction Application"
 markdown = f'<a href="{url}" target="_blank">{link_text}</a>'
 
 courses = df_lean['id'].unique()
@@ -37,6 +37,7 @@ with st.sidebar:
     st.write("**CCS:** Critical Core Skills")
 
     st.write('---')
+    st.write("The skills extraction is retreived from: "
     st.markdown(markdown, unsafe_allow_html=True)
     
 if len(selected_courses) == 0:
