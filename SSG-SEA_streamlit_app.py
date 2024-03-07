@@ -83,7 +83,7 @@ st.dataframe(filtered_df_data, use_container_width=True, hide_index=True)
 st.header("Overview of :orange[user selected courses]")
 col3,col4,col5 = st.columns((3))
 
-st.header("Analysis of :red[skills tagged]")
+st.header("Analysis of :red[additional skills extracted]")
 col6,col7 = st.columns((2))
 
 
