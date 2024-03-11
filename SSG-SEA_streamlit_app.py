@@ -117,7 +117,7 @@ with col5:
 with col6:
     fig = px.bar(merged_counts, x='skill_type', y=['in_lean', 'in_all'],
                  barmode='group', labels={'value': 'Count', 'variable': 'Data input'})
-    st.plotly_chart(fig)
+    st.plotly_chart(fig,use_container_width=True)
 with col7:
         st.write("This graph looks at the skills picked up from all OBTL fields that are not picked up when extracting from lean data fields.\
             It shows the number of skills that have a keyword match with text found in both the lean and all data fields, respectively.\
