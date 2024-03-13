@@ -13,6 +13,7 @@ df_lean = pd.read_excel(file,sheet_name="Skill_SSG_Data")
 df_all = pd.read_excel(file,sheet_name="Skill_SSG_All")
 df_diff = pd.read_excel(file,sheet_name="Skill_SSG_Diff")
 df_data = pd.read_excel(file,sheet_name="Course_Data")
+df = pd.read_excel(file,sheet_name="Overall")
 
 columns = ['id', 'skill', 'skill_type']
 
@@ -73,8 +74,9 @@ merged_counts = pd.merge(skill_type_counts_a, skill_type_counts_b, on='skill_typ
 
 
 ###############################################################################
-
 st.header("General distribution of :blue[all courses]")
+st.write("General information")
+st.dataframe(df, use_container_width=True, hide_index=True)
 col1,col2 = st.columns((2))
 
 st.header("Data :green[inputs]")
