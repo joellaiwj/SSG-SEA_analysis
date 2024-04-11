@@ -7,7 +7,12 @@ st.set_page_config(page_title="Comparison SSG-SEA input/output",page_icon=":book
 
 st.title(":books: Comparison SSG-SEA input/output Preliminary Study")
 
-file = "SBS_UG_new.xlsx"
+selected_program = st.sidebar.selectbox('Select program:', ['NBS', 'SBS'])
+
+if selected_program == 'NBS':
+    file = "NBS_UG_new.xlsx"
+else:
+    file = "SBS_UG_new.xlsx"
 
 df_lean = pd.read_excel(file,sheet_name="Skill_SSG_Data")
 df_all = pd.read_excel(file,sheet_name="Skill_SSG_All")
