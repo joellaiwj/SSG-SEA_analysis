@@ -100,12 +100,14 @@ with col1:
     st.write("Number of *skill_types* picked up by SSG_SEA for Course Aims + Course ILOs + Course Content")
     fig = px.histogram(df_lean, x="skill_type")#,color="id")
     fig.update_layout(yaxis_range=[0,yy])
+    fig.update_xaxes(categoryorder='array', categoryarray= ['App/Tools', 'CCS', 'TSC'])
     st.plotly_chart(fig,use_container_width=True,height=400)
 
 with col2:
     st.write("Number of *skill_types* picked up by SSG_SEA for entire OBTL less sensitive data and Graduate Attributes")
     fig = px.histogram(df_all, x="skill_type")#,color="id")
     fig.update_layout(yaxis_range=[0,yy])
+    fig.update_xaxes(categoryorder='array', categoryarray= ['App/Tools', 'CCS', 'TSC'])
     st.plotly_chart(fig,use_container_width=True,height=400)
 
 with col3:
