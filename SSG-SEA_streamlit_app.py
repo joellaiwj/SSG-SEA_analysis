@@ -7,7 +7,7 @@ st.set_page_config(page_title="Comparison SSG-SEA input/output",page_icon=":book
 
 st.title(":books: Comparison SSG-SEA input/output Preliminary Study")
 
-selected_program = st.sidebar.selectbox('Select program:', ['NBS', 'SBS'])
+selected_program = st.sidebar.selectbox(r"$\textsf{\large Select Programe:}$", ['NBS', 'SBS'])
 
 if selected_program == 'NBS':
     file = "NBS_UG_new.xlsx"
@@ -33,7 +33,7 @@ st.sidebar.header("Customization")
 with st.sidebar:
     st.write("This dashboard is to facilitate visualization of data collected\
              from skills tagging using SkillsFuture Skills Extraction Algorithm.\
-             This preliminary study is done for SBS UG courses only.")
+             This preliminary study.")
     
     selected_courses = st.multiselect('Select courses (all courses selected by default):', courses, default=[])
     
