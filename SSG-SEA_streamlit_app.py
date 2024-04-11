@@ -11,8 +11,10 @@ selected_program = st.sidebar.selectbox(r"$\textsf{\large Select Programe:}$", [
 
 if selected_program == 'NBS':
     file = "NBS_UG_new.xlsx"
+    yy = 1200
 else:
     file = "SBS_UG_new.xlsx"
+    yy = 310
 
 df_lean = pd.read_excel(file,sheet_name="Skill_SSG_Data")
 df_all = pd.read_excel(file,sheet_name="Skill_SSG_All")
@@ -97,13 +99,13 @@ col6,col7 = st.columns((2))
 with col1:
     st.write("Number of *skill_types* picked up by SSG_SEA for Course Aims + Course ILOs + Course Content")
     fig = px.histogram(df_lean, x="skill_type")#,color="id")
-    fig.update_layout(yaxis_range=[0,300])
+    fig.update_layout(yaxis_range=[0,yy])
     st.plotly_chart(fig,use_container_width=True,height=400)
 
 with col2:
     st.write("Number of *skill_types* picked up by SSG_SEA for entire OBTL less sensitive data and Graduate Attributes")
     fig = px.histogram(df_all, x="skill_type")#,color="id")
-    fig.update_layout(yaxis_range=[0,300])
+    fig.update_layout(yaxis_range=[0,yy])
     st.plotly_chart(fig,use_container_width=True,height=400)
 
 with col3:
