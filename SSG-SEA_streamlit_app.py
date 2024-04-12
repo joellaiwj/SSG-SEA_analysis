@@ -127,7 +127,7 @@ with col5:
 
 with col6:
     if selected_program == 'NBS':
-        st.write("Number of additional skill types - App/Tools: 104, CCS: 23, TSC: 457")
+        st.write("Number of additional skill types - App/Tools: 65, CCS: 104, TSC: 457")
     else:
         st.write("Number of additional skill types - App/Tools: 3, CCS: 23, TSC: 121")
 
