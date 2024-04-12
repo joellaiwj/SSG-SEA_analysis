@@ -134,10 +134,10 @@ with col6:
     fig = px.bar(merged_counts, x='skill_type', y=['in_lean', 'in_all'],
                  barmode='group', labels={'value': 'Count', 'variable': 'Data input'})
     st.plotly_chart(fig,use_container_width=True)
-with col7:
-        st.write("This graph looks at the skills picked up from all OBTL fields that are not picked up when extracting from lean data fields.\
-            It shows the number of skills that have a keyword match with text found in both the lean and all data fields, respectively.\
-            What this implies is that most of the CCS skills are inferred from the data input, while a good number of the TSC\
-            require some form of keyword mentions/repetition. Consequently, the more an instructor writes in the OBTL, especially in other sections,\
-            the more some skills will be picked up, sometimes accidentally. For example, 'Powerpoint' was picked up in one instance because the assessment criteria\
-            required students to do an 'oral presentation aided by powerpoint slides'. ")
+#with col7:
+#        st.write("This graph looks at the skills picked up from all OBTL fields that are not picked up when extracting from lean data fields.\
+#            It shows the number of skills that have a keyword match with text found in both the lean and all data fields, respectively.\
+#            What this implies is that most of the CCS skills are inferred from the data input, while a good number of the TSC\
+#            require some form of keyword mentions/repetition. Consequently, the more an instructor writes in the OBTL, especially in other sections,\
+#            the more some skills will be picked up, sometimes accidentally. For example, 'Powerpoint' was picked up in one instance because the assessment criteria\
+#            required students to do an 'oral presentation aided by powerpoint slides'. ")
